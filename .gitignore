@@ -1,0 +1,56 @@
+# C++ Build Artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# C++ Compiled Headers
+*.gch
+*.pch
+
+# C++ Dependency Files
+build/
+bin/
+
+# C++ IDE Files
+.vscode/
+.idea/
+
+# C++ Package Files
+*.tar.gz
+*.zip
+*.rar
+
+# C++ Build Directories
+Debug/
+Release/
+build/
+
+# C++ Miscellaneous
+*.sdf
+*.suo
+*.user
+*.bak
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+*.cache
+*.ncb
+*.pdb
+*.ilk
+*.log
+*.tlog
+*.ipch/
+*.bak
+*.obj
+*.sbr
+*.suo
+*.d
+*.swp
+*.out
+*.gcno
+*.gcda
+
