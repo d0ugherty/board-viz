@@ -7,30 +7,40 @@
 #include "board.h"
 #include "piece.h"
 #include "notation.h"
+#include "move.h"
 
 const std::string Board::START_POS_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-
-Board::Board(const std::string& fen) {
-    setPosition(fen);
+/** Constructors **/
+Board::Board(const std::string& fenString) {
+  setPosition(fenString);
 }
 
+Board::Board() {
 
+}
+/*********************************/
+/** Indexers **/
+Piece Board::operator[](int index) {
+    return board_state[index];
+}
 
+Piece Board::operator()(int rank, int file) {
+    return board_state[rank * 8 + file];
+}
+/********************************/
 // return the current FEN string
 std::string Board::getFen() const {
     return fen;
 }
 
-/***setup the board state according the given FEN string
+/** setup the board state according the given FEN string
     first the FEN string is split up into it's components:
     Piece placement, active color, castling availability, en passant target, halfmove clock, full move number
-
-
- */
-void Board::setPosition(const std::string& fen) {
-    Notation* notation;
-    Piece* board_state = new Piece[64];	
-    std::vector<std::string> tokens = splitString(fen, ' ');
+ 
+ **/
+void Board::setPosition(const std::string& fenString) {
+    //Piece* board_state = new Piece[64];	
+    std::vector<std::string> tokens = splitString(fenString, ' ');
 
     for (const auto& token : tokens) {
         std::cout << token << std::endl;
@@ -49,18 +59,16 @@ void Board::setPosition(const std::string& fen) {
                 int empty_squares = piece - '0';
                 file += empty_squares;
             } else {
-		board_state[rank * 8 + file] = notation -> toPiece(piece);
-		file++;
-	    }
+                board_state[rank * 8 + file] = Notation::toPiece(piece);
+                file++;
+	        }
         }
-	rank--;
+	    rank--;
     }
 
     // TO DO: Active Color
     // TO DO: Castling
     // TO DO: En Passant target
-    delete notation;
-    delete[] board_state; // Don't forget to deallocate the dynamically allocated array
 }
 
 /**
@@ -68,12 +76,28 @@ void Board::setPosition(const std::string& fen) {
  * and returns a vector<string> of its components
  * 
 */
-std::vector<std::string> Board::splitString(const std::string& fen, char delim) {
+std::vector<std::string> Board::splitString(const std::string& fenString, char delim) {
     std::vector<std::string> result;
-    std::istringstream iss(fen);
+    std::istringstream iss(fenString);
     std::string token;
     while(std::getline(iss, token, delim)) {
         result.push_back(token);
     }
     return result;
+}
+
+/**
+ * Update the board state according to the given move
+ */
+void Board::play(Move move){
+    Piece moving_piece = board_state[move.from_index];
+    if(move.Promotion != Piece::None){
+        moving_piece = move.Promotion;
+    }
+    // move the piece to the destination square
+    board_state[move.to_index] = moving_piece;
+    board_state[move.from_index] = Piece::None;
+    //TO DO: Add castling logic
+    //TO DO: Add En Passant Logic
+
 }

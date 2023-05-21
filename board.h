@@ -2,31 +2,29 @@
 #define BOARD_H
 #include <string>
 #include <vector>
+#include "move.h"
 #include "piece.h"
 
 class Board {
     public:
-	static const std::string START_POS_FEN;
-	Piece* board_state = new Piece[64];
-	//TO DO: Add Active Color
-	//TO DO: Add Castling Rights
-	//TO DO: Add En Passant Target
-	
-	//indexers
-	Piece operator[](int index){
-	    return board_state[index];
-	};
+		static const std::string START_POS_FEN;
+		Piece board_state[64];
+		
 
-	Piece operator()(int rank, int file) {
-	    return board_state[rank * 8 + file];
-	};
-
-        Board(const std::string& fen); // Constructor
-	void setPosition(const std::string& fen);
+		//TO DO: Add Castling Rights
+		//TO DO: Add En Passant Target
+		
+		// indexers made by operator overloading '[]'
+		Piece operator[](int index);
+		Piece operator()(int rank, int file);
+		// constructors
+		Board();
+			Board(const std::string& fen);
+		/**member functions**/
+		void play(Move move);
+		void setPosition(const std::string& fen);
         std::string getFen() const;
         std::vector<std::string> splitString(const std::string& fen, char delim);
-
-        void printBoard(Board board);
     private:
         std::string fen;
 
