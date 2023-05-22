@@ -9,7 +9,7 @@ class Notation{
     public: 
 	static int toSquare(const std::string squareNotation);
 	static Piece toPiece(const char ascii);
-	//static char toChar(Piece piece);
+	static char toChar(Piece piece);
 	static Move toMove(const std::string moveNotation);
 };
 

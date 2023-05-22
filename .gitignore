@@ -5,7 +5,7 @@
 *.dll
 *.so
 *.dylib
-
+board-viz
 # C++ Compiled Headers
 *.gch
 *.pch

@@ -43,11 +43,9 @@ Piece Notation::toPiece(const char ascii) {
  */
 int Notation::toSquare(std::string alg_notation) {
     int file = alg_notation[0] - 'a';
-	std::cout << "tosquare file = " << file <<std::endl;
     int rank = alg_notation[1] - '1';
-	std::cout << "tosquare rank = " << rank <<std::endl;
+
     int index = rank * 8 + file;
-	std::cout << "toSquare Index = " << index << std::endl;
     if(index >= 0 && index <=63) {
 	return index;
     } else {
@@ -61,6 +59,38 @@ int Notation::toSquare(std::string alg_notation) {
 Move Notation::toMove(std::string alg_notation) {
 	Move move(alg_notation);
 	return move;
+}
+
+/** Converts a piece object to the char representation **/
+char Notation::toChar(Piece piece) {
+    switch(piece) {
+	case Piece::WhitePawn:
+	    return 'P';
+	case Piece::WhiteKnight:
+	    return 'N';
+	case Piece::WhiteRook:
+	    return 'R';
+	case Piece::WhiteBishop:
+	    return 'B';
+	case Piece::WhiteQueen:
+	    return 'Q';
+	case Piece::WhiteKing:
+	    return 'K';
+	case Piece::BlackPawn:
+	    return 'p';
+	case Piece::BlackKnight:
+	    return 'n';
+	case Piece::BlackRook:
+	    return 'r';
+	case Piece::BlackBishop:
+	    return 'b';
+	case Piece::BlackQueen:
+	    return 'q';
+	case Piece::BlackKing:
+	    return 'k';
+	default:
+	    return ' ';
+    }
 }
 
 

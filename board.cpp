@@ -11,12 +11,14 @@
 
 const std::string Board::START_POS_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 /** Constructors **/
-Board::Board(const std::string& fenString) {
+Board::Board(const std::string& fenString) : board_state{} {
   setPosition(fenString);
 }
 
-Board::Board() {
-
+Board::Board() : board_state{} {
+   for(int i = 0; i  < 64; i++){
+       board_state[i] = Piece::None;
+   }
 }
 /*********************************/
 /** Indexers **/
@@ -38,19 +40,11 @@ std::string Board::getFen() const {
     Piece placement, active color, castling availability, en passant target, halfmove clock, full move number
  
  **/
-void Board::setPosition(const std::string& fenString) {
-    //Piece* board_state = new Piece[64];	
+void Board::setPosition(const std::string& fenString) {	
     std::vector<std::string> tokens = splitString(fenString, ' ');
-
-    for (const auto& token : tokens) {
-        std::cout << token << std::endl;
-    }
-
     // Piece placement
     std::vector<std::string> fen_position = splitString(tokens[0], '/');
-    std::cout << fen_position[0] << std::endl;
-
-    // Add error handling here
+    // TO DO: Add error handling here
     int rank = 7;
     for (const std::string& row : fen_position) {
         int file = 0;
