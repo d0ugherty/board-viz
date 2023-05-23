@@ -20,7 +20,7 @@ int main() {
 	for(std::string move : moves) {
 	    playMove(board1, move);
 	    printBoard(board1);
-	    std::cout<< ">>> Last Move: " << move <<std::endl;
+	    std::cout<< ">>> Last Move: " << move << "\n";
 	}
     }
     return 0;
@@ -36,17 +36,19 @@ int main() {
  *  to print out the current move or state of the game
  */
 void printBoard(Board& board) {
-    std::cout << "\n" << "   A  B  C  D  E  F  G  H " << std::endl;
-    std::cout << " --------------------------" << std::endl;
+    std::cout << "	              BLACK	    \n";
+    std::cout << "\n" << "   A  B  C  D  E  F  G  H \n";
+    std::cout << 	 " --------------------------\n";
     for (int rank = 7; rank >= 0; rank--) {
         std::cout << rank + 1 << "|";
         for (int file = 0; file < 8; file++) {
             Piece piece = board[rank * 8 + file];
 	    printPiece(piece);
         }
-        std::cout << std::endl;
+        std::cout << "\n";
     }
-    std::cout << " --------------------------" << std::endl;
+    std::cout << 	 "---------------------------";
+    std::cout <<	 "	      WHITE	     ";	
 }
 
 /* Prints the char representation of the Piece object
