@@ -47,7 +47,7 @@ void printBoard(Board& board) {
         }
         std::cout << "\n";
     }
-    std::cout << 	 "---------------------------";
+    std::cout << 	 "---------------------------\n";
     std::cout <<	 "	      WHITE	     ";	
 }
 
