@@ -124,5 +124,35 @@ std::string Notation::toString(Piece piece) {
     }
 }
 
+std::string Notation::toString(const char ascii) {
+    switch(ascii) {
+	case 'P':
+	    return "White Pawn";
+	case 'N':
+	    return "White Knight";
+	case 'R':
+	    return "White Rook";
+	case 'B':
+	    return "White Bishop";
+	case 'Q':
+	    return "White Queen";
+	case 'K':
+	    return "White King";
+	case 'p':
+	    return "Black Pawn";
+	case 'n':
+	    return "Black Knight";
+	case 'r':
+	    return "Black Rook";
+	case 'b':
+	    return "Black Bishop";
+	case 'q':
+	    return "Black Queen";
+	case 'k':
+	    return "Black King";
+	default:
+	    return ' ';
+    }
+
 
 
