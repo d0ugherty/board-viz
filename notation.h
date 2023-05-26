@@ -11,6 +11,7 @@ class Notation{
 	static Piece toPiece(const char ascii);
 	static char toChar(Piece piece);
 	static Move toMove(const std::string moveNotation);
+	static std::string toString(Piece piece);
 };
 
 #endif
