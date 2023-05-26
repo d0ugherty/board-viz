@@ -55,7 +55,7 @@ void Board::setPosition(const std::string& fenString) {
             } else {
                 board_state[rank * 8 + file] = Notation::toPiece(piece);
                 file++;
-	        }
+	    }
         }
 	    rank--;
     }
