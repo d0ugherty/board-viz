@@ -37,8 +37,8 @@ int main() {
  */
 void printBoard(Board& board) {
     std::cout << "	              BLACK	    \n";
-    std::cout << "\n" << "   A  B  C  D  E  F  G  H \n";
-    std::cout << 	 " --------------------------\n";
+    std::cout << "   	    A  B  C  D  E  F  G  H \n";
+    std::cout << "        --------------------------\n";
     for (int rank = 7; rank >= 0; rank--) {
         std::cout << rank + 1 << "|";
         for (int file = 0; file < 8; file++) {
