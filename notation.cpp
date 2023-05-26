@@ -93,5 +93,36 @@ char Notation::toChar(Piece piece) {
     }
 }
 
+std::string Notation::toString(Piece piece) {
+    switch(piece) {
+	case Piece::WhitePawn:
+	    return "White Pawn";
+	case Piece::WhiteKnight:
+	    return "White Knight";
+	case Piece::WhiteRook:
+	    return "White Rook";
+	case Piece::WhiteBishop:
+	    return "White Bishop";
+	case Piece::WhiteQueen:
+	    return "White Queen";
+	case Piece::WhiteKing:
+	    return "White King";
+	case Piece::BlackPawn:
+	    return "Black Pawn";
+	case Piece::BlackKnight:
+	    return "Black Knight";
+	case Piece::BlackRook:
+	    return "Black Rook";
+	case Piece::BlackBishop:
+	    return "Black Bishop";
+	case Piece::BlackQueen:
+	    return "Black Queen";
+	case Piece::BlackKing:
+	    return "Black King";
+	default:
+	    return ' ';
+    }
+}
+
 
 
