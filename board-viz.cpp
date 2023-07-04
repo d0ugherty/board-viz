@@ -4,24 +4,39 @@
 #include "notation.h"
 #include "move.h"
 
+#define RESET_COLOR "\033[0m" //macro to reset color back to default
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define BLUE "\033[34m"
+#define YELLOW "\033[33m"
+
 void printBoard(Board& board);
 void printPiece(Piece piece);
 void playMove(Board& board, std::string moveNot);
 
 int main() {
     Board board1(Board::START_POS_FEN);
-    printBoard(board1); 
-    bool running = true;
-    while (running) {
-	std::cout << "\n>> Move: ";
-	std::string input;
-	std::cin >> input;
-	std::vector<std::string> moves = board1.splitString(input, ' ');
-	for(std::string move : moves) {
-	    playMove(board1, move);
-	    printBoard(board1);
-	    std::cout<< ">>> Last Move: " << move << "\n";
-	}
+    
+    printBoard(board1);
+    
+    //bool running = true;
+    std::string line;
+    while (std::getline(std::cin, line)) {
+        std::cout << "\n>> Move <<\n";
+        std::string input;
+        std::cin >> input;
+        std::vector<std::string> moves = board1.splitString(input, ' ');
+        
+            for(std::string move : moves) {
+                playMove(board1, move);
+                printBoard(board1);
+                std::cout<< "\n>>> Last Move: " << move << "\n";
+            }
+        
+        if (std::cin.eof()) {
+            std::cout << "End of game log..." << std::endl;
+            break;
+        }
     }
     return 0;
 }
@@ -36,26 +51,35 @@ int main() {
  *  to print out the current move or state of the game
  */
 void printBoard(Board& board) {
-    std::cout << "	              BLACK	    \n";
-    std::cout << "   	    A  B  C  D  E  F  G  H \n";
-    std::cout << "        --------------------------\n";
+    std::cout << "	   BLACK	    \n";
+    std::cout << " A  B  C  D  E  F  G  H \n";
+    std::cout << "--------------------------\n";
+    
     for (int rank = 7; rank >= 0; rank--) {
+        
         std::cout << rank + 1 << "|";
+            
         for (int file = 0; file < 8; file++) {
-            Piece piece = board[rank * 8 + file];
-	    printPiece(piece);
-        }
+                Piece piece = board[rank * 8 + file];
+                printPiece(piece);
+            }
         std::cout << "\n";
     }
-    std::cout << 	 "---------------------------\n";
-    std::cout <<	 "	      WHITE	     ";	
+
+    std::cout <<"---------------------------\n";
+    std::cout <<"	  WHITE	    \n";	
 }
 
 /* Prints the char representation of the Piece object
  */
 void printPiece(Piece piece){
-    std::cout << " " << Notation::toChar(piece);
-    std::cout << ' ';
+    if (piece >= 0 && piece <= 6) {
+        std::cout << " " << YELLOW <<  Notation::toChar(piece) << RESET_COLOR;
+        std::cout << ' ';
+    } else if (piece >= 7 && piece <= 12) {
+        std::cout << " " << BLUE << Notation::toChar(piece) << RESET_COLOR;
+        std::cout << ' ';
+    }   
 }
 
 

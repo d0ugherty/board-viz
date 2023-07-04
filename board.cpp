@@ -47,7 +47,7 @@ void Board::setPosition(const std::string& fenString) {
     // TO DO: Add error handling here
     int rank = 7;
     for (const std::string& row : fen_position) {
-        int file = 0;
+	int file = 0;
         for (char piece : row) {
             if (isdigit(piece)) {
                 int empty_squares = piece - '0';
@@ -55,7 +55,7 @@ void Board::setPosition(const std::string& fenString) {
             } else {
                 board_state[rank * 8 + file] = Notation::toPiece(piece);
                 file++;
-	    }
+	        }
         }
 	    rank--;
     }
