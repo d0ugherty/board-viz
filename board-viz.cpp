@@ -52,7 +52,7 @@ int main() {
  */
 void printBoard(Board& board) {
     std::cout << "	   BLACK	    \n";
-    std::cout << " A  B  C  D  E  F  G  H \n";
+    std::cout << "   A  B  C  D  E  F  G  H \n";
     std::cout << "--------------------------\n";
     
     for (int rank = 7; rank >= 0; rank--) {
@@ -67,7 +67,7 @@ void printBoard(Board& board) {
     }
 
     std::cout <<"---------------------------\n";
-    std::cout <<"	  WHITE	    \n";	
+    std::cout <<"	   WHITE	    \n";	
 }
 
 /* Prints the char representation of the Piece object
