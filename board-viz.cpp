@@ -73,12 +73,10 @@ void printBoard(Board& board) {
 /* Prints the char representation of the Piece object
  */
 void printPiece(Piece piece){
-    if (piece >= 0 && piece <= 6) {
-        std::cout << " " << YELLOW <<  Notation::toChar(piece) << RESET_COLOR;
-        std::cout << ' ';
-    } else if (piece >= 7 && piece <= 12) {
-        std::cout << " " << BLUE << Notation::toChar(piece) << RESET_COLOR;
-        std::cout << ' ';
+    if (piece <= 6) {
+        std::cout << ' ' << YELLOW <<  Notation::toChar(piece) << RESET_COLOR << ' ';
+    } else {
+        std::cout << ' ' << BLUE << Notation::toChar(piece) << RESET_COLOR << ' ';
     }   
 }
 
