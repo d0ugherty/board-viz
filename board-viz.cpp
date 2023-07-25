@@ -15,11 +15,11 @@ void printPiece(Piece piece);
 void playMove(Board& board, std::string moveNot);
 
 int main() {
+    // TO-DO: Make START_POS_FEN an argument from a file or command line entry
     Board board1(Board::START_POS_FEN);
     
     printBoard(board1);
     
-    //bool running = true;
     std::string line;
     while (std::getline(std::cin, line)) {
         std::cout << "\n>> Move <<\n";
