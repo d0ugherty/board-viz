@@ -12,8 +12,8 @@ TARGET = board-viz
 
 all: $(TARGET)
 
-$(TARGET): board-viz.cpp
-	$(CC) $(CFLAGS) -o $(TARGET) board-viz.cpp board.cpp notation.cpp move.cpp $(LDFLAGS)
+$(TARGET): src/board-viz.cpp
+	$(CC) $(CFLAGS) -o $(TARGET) src/board-viz.cpp src/board.cpp src/notation.cpp src/move.cpp $(LDFLAGS)
 
 clean:
 	rm -f $(TARGET)	

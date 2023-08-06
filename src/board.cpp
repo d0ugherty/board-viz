@@ -9,6 +9,7 @@
 #include "notation.h"
 #include "move.h"
 
+
 // TO-DO: Make START_POS_FEN an argument from a file or command line entry
 const std::string Board::START_POS_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 /** Constructors **/
