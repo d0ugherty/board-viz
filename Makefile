@@ -5,7 +5,7 @@
 CC = gcc
 CFLAGS = -Wall -g
 LDFLAGS = -lstdc++
-TARGET = board-viz
+TARGET = build/board-viz
 
 
 # RULES
